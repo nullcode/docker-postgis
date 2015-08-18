@@ -23,7 +23,7 @@ database with `postgis.sql`, `topology.sql`, and `spatial_ref_sys.sql` loaded.
 In order to run a basic container capable of serving a PostGIS-enabled database,
 start a container as follows:
 
-    docker run --name some-postgis -e POSTGRES_PASSWORD=mysecretpassword -d mdillon/postgis
+    docker run --name <some-postgis> -e POSTGRES_PASSWORD=<mysecretpassword> -d nullcode/docker-postgis
 
 For more detailed instructions about how to start and control your Postgres
 container, see the documentation for the `postgres` image
@@ -32,10 +32,9 @@ container, see the documentation for the `postgres` image
 Once you have started a database container, you can then connect to the
 database as follows:
 
-    docker run -it --link some-postgis:postgres --rm postgres \
-        sh -c 'exec psql -h "$POSTGRES_PORT_5432_TCP_ADDR" -p "$POSTGRES_PORT_5432_TCP_PORT" -U postgres'
+    docker exec -it <some-postgis> bash
 
-Using the resulting `psql` shell, you can create a PostGIS-enabled database by
+Using the resulting `gosu postgres psql` shell, you can create a PostGIS-enabled database by
 using the `CREATE EXTENSION` mechanism (or by using `template_postgis` for Postgres 9.0):
 
 ```SQL
