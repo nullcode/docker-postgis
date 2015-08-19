@@ -14,10 +14,6 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 ```
 
-If you are using 9.0 or would otherwise prefer to use the older template database
-mechanism for installing PostGIS, the image also provides a `template_postgis` template
-database with `postgis.sql`, `topology.sql`, and `spatial_ref_sys.sql` loaded.
-
 ## Usage
 
 In order to run a basic container capable of serving a PostGIS-enabled database,
